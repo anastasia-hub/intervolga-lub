@@ -1,0 +1,42 @@
+
+.header-title, .header-title_wrap {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-title_wrap-item {
+    margin: 0px 10px;
+}
+.header-title_wrap-item_image {
+    width: 120px;
+    height: 100px;
+}
+
+.item {
+    background-color: seashell;
+    padding: 35px 35px 0 35px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.item-list_img {
+    height: 275px;
+    width: 400px;
+    border: 10px solid #FFF;
+    border-radius: 20px;
+}
+h4 {
+    margin: 0;
+}
+
+.form-filter {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.client-table {
+    
+}
+
+

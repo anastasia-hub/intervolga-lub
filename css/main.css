@@ -1,0 +1,53 @@
+.form {
+    height: 500px;
+    margin: auto;
+    margin-top: 40px;
+    font-family: Montserrat, sans-serif;
+}
+
+a {
+    color: #7c9ab7;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+p {
+    margin: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    border: unset;
+    border-bottom: 2px solid #e3e3e3;
+    outline: none;
+}
+
+.error {
+    border: 2px solid #ff4332;
+    background-color: rgba(184, 21, 0, 0.308);
+    color: #FFF;
+}
+.error::placeholder {
+    color: #FFF;
+}
+
+.msg {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.none {
+    display: none;
+}
+
+.logout {
+    color: #b7625c;
+}
