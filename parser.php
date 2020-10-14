@@ -1,20 +1,15 @@
-<?php
-
-
-    $doc = new DOMDocument;
-    $doc->loadhtmlfile('html/first.html');
-
-    $body = $doc->getElementsByTagName('body');
-    if ( $body && 0<$body->length ) {
-        $body = $body->item(0);
-        echo $doc->savehtml($body);
-    }
-    $doc1 = new DOMDocument;
-    $doc1->loadhtmlfile('html/first.html');
-
-    $body1 = $doc->getElementsByTagName('body');
-    if ( $body1 && 0<$body1->length ) {
-        $body1 = $body1->item(0);
-        echo $doc1->savehtml($body1);
-    }
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="parser_wrap.php" method="get">
+        <label for="">искомая строка:</label>
+        <input name="find_text" type="text">
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>
