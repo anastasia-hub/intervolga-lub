@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require_once("server/connect.php");
+    require_once("server/select.php");
 
 ?>
 
@@ -26,93 +28,15 @@
             <div class="row">
                 <div class="col">
                     <div class="item-list">
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-6">
-                                    <img class="item-list_img" src="img/1.jpg" alt="Image">
-                                </div>
-                                <div class="col-6">
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Название страны</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Стоимость: (N) &#8381</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Длительность тура: (M) ночей</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5 float-right">
-                                        <div class="col mr-5 ">
-                                            <a href="#" class="btn btn-outline-success"><h4>Заказать</h4></a>
-                                        </div>
-                                    </div>                              
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-6">
-                                    <img class="item-list_img" src="img/2.jpg" alt="Image">
-                                </div>
-                                <div class="col-6">
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Название страны</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Стоимость: (N) &#8381</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Длительность тура: (M) ночей</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5 float-right">
-                                        <div class="col mr-5 ">
-                                            <a href="#" class="btn btn-outline-success"><h4>Заказать</h4></a>
-                                        </div>
-                                    </div>                              
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-6">
-                                    <img class="item-list_img" src="img/3.jpg" alt="Image">
-                                </div>
-                                <div class="col-6">
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Название страны</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Стоимость: (N) &#8381</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="col">
-                                            <h4>Длительность тура: (M) ночей</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5 float-right">
-                                        <div class="col mr-5 ">
-                                            <a href="#" class="btn btn-outline-success"><h4>Заказать</h4></a>
-                                        </div>
-                                    </div>                              
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                            foreach(Select($connect, 'tours') as $tour)
+                            {
+                                $city = Select($connect, 'citys', $where=['id'=>$tour['city_id']])[0];
+                                $country = Select($connect, 'countrys', $where=['id'=>$city['country_id']])[0];
+                                $tour['city'] = $city['name'].", ".$country['name']; 
+                                require("modules/tour.php");
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

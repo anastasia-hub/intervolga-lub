@@ -4,6 +4,7 @@
     if (isset($_SESSION['user']) and $_SESSION['user']) {
         header('Location: profile.php');
     }
+    
 ?>
 
 <!doctype html>

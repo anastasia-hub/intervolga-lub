@@ -3,6 +3,9 @@
     if (!$_SESSION['user']) {
         header('Location: /');
     }
+    require_once("server/connect.php");
+    require_once("server/select.php");
+    
 ?>
 
 <!doctype html>
@@ -27,57 +30,47 @@
                     <h4>Ваша почта: <?= $_SESSION['user']['email'] ?></h4>
                 </div>
                 <div class="col-2">
-                    <a class="btn btn-danger" href="modules/logout.php" class="logout">Выход</a>
+                    <a class="btn btn-danger" href="server/logout.php" class="logout">Выход</a>
                 </div>
             </div>
             <div class="row mt-5">
                 <h3>История покупок:</h3>
                 <table class="table table-striped">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Id</th>
-                                <th scope="col">Дата</th>
-                                <th scope="col">Откуда</th>
-                                <th scope="col">Куда</th>
-                                <th scope="col">Статус</th>
-                                <th scope="col">Подробнее</th>
-                                <th scope="col">Чек</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>@Id</td>
-                                <td>@Дата</td>
-                                <td>@Откуда</td>
-                                <td>@Куда</td>
-                                <td>@Статус</td>
-                                <td><a href="#">Перейти</a></td>
-                                <td><a href="#">Показать</a></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>@Id</td>
-                                <td>@Дата</td>
-                                <td>@Откуда</td>
-                                <td>@Куда</td>
-                                <td>@Статус</td>
-                                <td><a href="#">Перейти</a></td>
-                                <td><a href="#">Показать</a></td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>@Id</td>
-                                <td>@Дата</td>
-                                <td>@Откуда</td>
-                                <td>@Куда</td>
-                                <td>@Статус</td>
-                                <td><a href="#">Перейти</a></td>
-                                <td><a href="#">Показать</a></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Название</th>
+                      <th scope="col">Куда</th>
+                      <th scope="col">Стоимость</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $iter = 1;
+                      foreach(Select($connect, 'receipts', $where=['user_id'=>$_SESSION['user']['id']]) as $receipt)
+                      {
+                          $tour = Select($connect, 'tours', $where=['id'=>$receipt['tour_id']])[0];
+                          $city = Select($connect, 'citys', $where=['id'=>$tour['city_id']])[0];
+                          $country = Select($connect, 'countrys', $where=['id'=>$city['country_id']])[0];
+                          
+                          $tour['city'] = $city['name'].", ".$country['name']; 
+
+                          echo ("
+                            <tr>
+                              <th scope=\"row\">".$iter."</th>
+                              <td>".$tour['id']."</td>
+                              <td>".$tour['name']."</td>
+                              <td>".$tour['city']."</td>
+                              <td>".$tour['price']."</td>
+                            </tr>
+                          ");
+
+                          $iter+=1;
+                      }
+                    ?>
+                  </tbody>
+                </table>
             </div>
         </div>
 

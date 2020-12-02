@@ -11,7 +11,7 @@ $('.login-btn').click(function (e) {
         password = $('input[name="password"]').val();
 
     $.ajax({
-        url: 'modules/signin.php',
+        url: 'server/signin.php',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -69,7 +69,7 @@ $('.register-btn').click(function (e) {
     formData.append('password_confirm', password_confirm);
         
     $.ajax({
-        url: 'modules/signup.php',
+        url: 'server/signup.php',
         type: 'POST',
         dataType: 'json',
         processData: false,
