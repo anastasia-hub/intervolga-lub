@@ -5,7 +5,7 @@ function Select($connect, $model_name, $where=NULL, $start = 0, $end = PHP_INT_M
     $model_fields = [
         "users" => ['clients', ['id', 'name', 'lastname', 'birthday', 'num_passport', 'seria_passport', 'status', 'email']],
         "userInsert" => ['clients', ['name', 'lastname', 'birthday', 'num_passport', 'seria_passport', 'status', 'email', 'password']],
-        "tours" => ['tour', ['id', 'name', 'price', 'duration', 'amount_tickets', 'busy_tickets', 'descript', 'city_id']],
+        "tours" => ['tour', ['id', 'name', 'price', 'duration', 'amount_tickets', 'busy_tickets', 'descript', 'icon_path', 'city_id', 'city_from_id']],
         "countrys" => ['country', ['id', 'name', 'priority', 'climate_id']],
         "citys" => ['city', ['id', 'name', 'priority', 'country_id']],
         "climates" => ['climate', ['id', 'name', 'popularity']],
@@ -22,13 +22,16 @@ function Select($connect, $model_name, $where=NULL, $start = 0, $end = PHP_INT_M
         $where_str = [];
         foreach(array_keys($where) as $item)
         {
-            array_push($where_str, "`".mysqli_real_escape_string($connect, $item)."` = ".mysqli_real_escape_string($connect, $where[$item]));
+            if($where[$item] != "")
+            {
+                array_push($where_str, "`".mysqli_real_escape_string($connect, $item)."` = '".mysqli_real_escape_string($connect, $where[$item])."'");
+            } 
         }
-
+        
         $response = mysqli_query($connect, "SELECT "
             .join(', ', array_map(function($str) {return "`$str`";}, $fields))
             ." FROM `$table_name` WHERE "
-            .join(', ', $where_str));
+            .join(' AND ', $where_str));
     }
     else
     {

@@ -3,9 +3,9 @@
 session_start();
 require_once 'connect.php';
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-
+$email = mysqli_real_escape_string($connect, $_POST['email']);
+$password = mysqli_real_escape_string($connect, $_POST['password']);
+ 
 $error_fields = [];
 
 if ($email === '') {

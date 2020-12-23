@@ -1,7 +1,7 @@
 <div class="item">
     <div class="row">
         <div class="col-6">
-            <img class="item-list_img" src="img/1.jpg" alt="Image">
+            <img class="item-list_img" src="<?= $tour['icon_path'] ?>" alt="Image">
         </div>
         <div class="col-6">
             <div class="row mb-3">

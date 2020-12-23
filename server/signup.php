@@ -3,14 +3,14 @@
 session_start();
 require_once 'connect.php';
 
-$name = $_POST['name'];
-$lastname = $_POST['lastname'];
-$email = $_POST['email'];
-$birthday = $_POST['birthday'];
-$num_passport = $_POST['num_passport'];
-$seria_passport = $_POST['seria_passport'];
-$password = $_POST['password'];
-$password_confirm = $_POST['password_confirm'];
+$name = mysqli_real_escape_string($connect, $_POST['name']);
+$lastname = mysqli_real_escape_string($connect, $_POST['lastname']);
+$email = mysqli_real_escape_string($connect, $_POST['email']);
+$birthday = mysqli_real_escape_string($connect, $_POST['birthday']);
+$num_passport = mysqli_real_escape_string($connect, $_POST['num_passport']);
+$seria_passport = mysqli_real_escape_string($connect, $_POST['seria_passport']);
+$password = mysqli_real_escape_string($connect, $_POST['password']);
+$password_confirm = mysqli_real_escape_string($connect, $_POST['password_confirm']);
 
 $check_login = mysqli_query($connect, "SELECT * FROM `clients` WHERE `email` = '$email'");
 if (mysqli_num_rows($check_login) > 0) {

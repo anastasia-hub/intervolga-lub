@@ -14,7 +14,8 @@
     <meta charset="UTF-8">
     <title>Личный кабинет</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
 <body>
@@ -30,7 +31,8 @@
                     <h4>Ваша почта: <?= $_SESSION['user']['email'] ?></h4>
                 </div>
                 <div class="col-2">
-                    <a class="btn btn-danger" href="server/logout.php" class="logout">Выход</a>
+                    <a class="btn btn-primary mt-3" href="update.php?model=users&object_id=<?= $_SESSION['user']['id'] ?>" class="logout">Изменить данные</a>
+                    <a class="btn btn-danger mt-3" href="server/logout.php" class="logout">Выход</a>
                 </div>
             </div>
             <div class="row mt-5">
@@ -53,8 +55,8 @@
                           $tour = Select($connect, 'tours', $where=['id'=>$receipt['tour_id']])[0];
                           $city = Select($connect, 'citys', $where=['id'=>$tour['city_id']])[0];
                           $country = Select($connect, 'countrys', $where=['id'=>$city['country_id']])[0];
-                          
-                          $tour['city'] = $city['name'].", ".$country['name']; 
+
+                          $tour['city'] = $city['name'].", ".$country['name'];
 
                           echo ("
                             <tr>

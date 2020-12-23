@@ -8,7 +8,7 @@
     if (!$_SESSION['user'] or $_SESSION['user']['status'] < 2 or !$table_name) {
         header('Location: /');
     }
-        
+
     $models = [
         'tour' => ['name', 'price', 'duration', 'amount_tickets', 'descript', 'city_id'],
         'climate' => ['name', 'popularity'],

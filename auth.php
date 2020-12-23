@@ -30,16 +30,18 @@
         <div class="form-group">
             <label for="password">Пароль</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль">
+
         </div>
-        
         <button type="submit" class="btn btn-primary login-btn">Войти</button>
         <p>
-            У вас нет аккаунта? - <a href="/register.php">зарегистрируйтесь</a>!
+            У вас нет аккаунта? - <a href="/register.php">зарегистрируйтесь!</a>
         </p>
+
         <p class="msg none alert alert-danger"></p>
     </form>
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 
 </body>

@@ -20,16 +20,15 @@ function Insert($connect, $model_name, $fields)
         }
         catch(Exception $e) 
         {
-            return false;
+            echo json_encode(["msg" => "Не найдено поле"]);
+            die();
         }
     }
-
+        
     mysqli_query($connect, "INSERT INTO `$table_name` ("
                 .join(', ', array_map(function($str) {return "`$str`";}, $model_fields[$model_name][1]))
                 .") VALUES ("
                 .join(',', array_map(function($str) {return "'$str'";}, $select_fields))
                 .")");
-    
-    return true;
 }
 ?>

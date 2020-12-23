@@ -24,6 +24,12 @@
     <main>
         <div class="container">
             <div class="row text-center mt-4">
+                <div class="col"><a href="/tours_list.php"><button class="btn btn-primary">Список туров</button></a></div>
+                <div class="col"><a href="/citys_list.php"><button class="btn btn-primary">Список городов</button></a></div>
+                <div class="col"><a href="/countrys_list.php"><button class="btn btn-primary">Список стран</button></a></div>
+                <div class="col"><a href="/climates_list.php"><button class="btn btn-primary">Список климатов</button></a></div>
+            </div>
+            <div class="row text-center mt-4">
                 <div class="col"><a href="./insert.php?model=tour"><button class="btn btn-primary">Добавить тур</button></a></div>
                 <div class="col"><a href="./insert.php?model=city"><button class="btn btn-primary">Добавить город</button></a></div>
                 <div class="col"><a href="./insert.php?model=country"><button class="btn btn-primary">Добавить страну</button></a></div>
@@ -67,7 +73,7 @@
                                 <th scope="col">Фамилия</th>
                                 <th scope="col">Статус</th>
                                 <th scope="col">email</th>
-                                <th scope="col">История поездок</th>
+                                <th scope="col">Редактировать</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -83,14 +89,13 @@
                                         <td>".$user['lastname']."</td>
                                         <td>".$user['status']."</td>
                                         <td>".$user['email']."</td>
-                                        <td><a href=\"#\">Перейти</a></td>
+                                        <td><a href=\"update.php?model=users&object_id=".$user['id']."\">Перейти</a></td>
                                       </tr> 
                                     ");
 
                                     $iter+=1;
                                 }
                               ?>
-                              
                             </tbody>
                           </table>
                     </div>

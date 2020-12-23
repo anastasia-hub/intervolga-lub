@@ -10,8 +10,8 @@
     </div>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <form class="form-inline my-2 my-lg-0 col-3 ml-5">
-            <input class="form-control mr-sm-2" type="search" placeholder="Поиск билетов" aria-label="Search">
+        <form method="GET" action="search.php" class="form-inline my-2 my-lg-0 col-3 ml-5">
+            <input name="query" class="form-control mr-sm-2" type="search" placeholder="Введите куда хотите съездить" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
         </form>
         <div class="col-2">
